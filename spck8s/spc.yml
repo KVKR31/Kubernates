@@ -1,0 +1,35 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spc-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: spc
+  template:
+    metadata:
+      labels: spc
+        app: practice
+    spec:
+      containers:
+        - name: 
+          image:
+          ports:
+            - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spc-service
+spec:
+  selector:
+    app: spc
+  ports:
+    - name: spc
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+          
